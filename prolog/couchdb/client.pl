@@ -41,6 +41,9 @@ Client.get_url(URL) := Status-Reply :-
 Client.put_url(URL, Data) := Status-Reply :-
     http_put(Client.url(URL), json(Data), Reply, [json_object(dict), status_code(Status)]).
 
+Client.post_url(URL, Data) := Status-Reply :-
+    http_post(Client.url(URL), json(Data), Reply, [json_object(dict), status_code(Status)]).
+
 Client.delete_url(URL) := Status-Reply :-
     http_delete(Client.url(URL), Reply, [json_object(dict), status_code(Status)]).
 
