@@ -5,6 +5,8 @@
 
 :- use_module(couchdb/client, []).
 :- use_module(couchdb/database, []).
+:- use_module(couchdb/document, []).
+:- use_module(couchdb/revision, []).
 
 :- dynamic connection/2.
 

@@ -1,0 +1,1 @@
+:- module(couchdb_revision, []).
