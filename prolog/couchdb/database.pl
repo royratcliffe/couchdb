@@ -21,3 +21,7 @@ Database.create() := Status-Reply :-
 Database.delete() := Status-Reply :-
     Database.client.delete_url(Database.db) = Status-Reply,
     tag_dict(Reply, couchdb_delete).
+
+Database.new_doc(Content) := Status-Reply :-
+    Database.client.post_url(Database.db, Content) = Status-Reply,
+    tag_dict(Reply, couchdb_reply).
