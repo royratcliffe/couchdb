@@ -10,6 +10,8 @@
     db//1,
     welcome//0,
     all_dbs//0,
+    all_databases//0,
+    membership//0,
 
     head_url//1,
     get_url//1,
@@ -30,6 +32,10 @@ Client.all_databases() := AllDatabases :-
     Client.all_dbs() = AllDbs,
     maplist({Client}/[Db, Database]>>
             (Client.db(Db) = Database), AllDbs, AllDatabases).
+
+Client.membership() := Membership :-
+    Client.get_url('_membership') = 200-Membership,
+    tag_dict(Membership, couchdb_membership).
 
 Client.head_url(URL) := Status :-
     http_open(Client.url(URL), Stream, [method(head), status_code(Status)]),
