@@ -16,6 +16,8 @@
     head_url//1,
     get_url//1,
     put_url//2,
+    post_url//2,
+    delete_url//1,
     url//1.
 
 Server.db(Db) := couchdb_database{server:Server, db:Db}.
