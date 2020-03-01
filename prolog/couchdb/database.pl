@@ -11,7 +11,7 @@ Database.doc(ID) := couchdb_document{database:Database, id:ID_} :-
     atom_string(ID_, ID).
 
 Database.info() := Info :-
-    Database.server.get_url(Database.db) = Info,
+    Database.server.get_url(Database.db) = 200-Info,
     tag_dict(Info, couchdb_info).
 
 Database.exists() := Status :-
