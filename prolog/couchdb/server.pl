@@ -1,6 +1,6 @@
 :- module(couchdb_server, []).
 
-:- use_module(library(http/http_server)).
+:- use_module(library(http/http_client)).
 :- use_module(library(http/http_open)).
 :- use_module(library(http/http_json), []).
 
