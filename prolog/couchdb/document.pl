@@ -9,4 +9,4 @@ Document.url() := URL :-
     atomic_list_concat([Document.database.db, Document.id], /, URL).
 
 Document.get() := Doc :-
-    Document.database.client.get_url(Document.url()) = Doc.
+    Document.database.server.get_url(Document.url()) = Doc.
