@@ -42,7 +42,7 @@ Server.head_url(URL) := Status :-
     close(Stream).
 
 Server.get_url(URL) := Status-Reply :-
-    http_get(Server.url(URL), Reply, [json_object(dict), status_code(Status)]).
+    http_get(Server.url(URL), Reply, [request_header(accept=application/json), json_object(dict), status_code(Status)]).
 
 Server.put_url(URL, Data) := Status-Reply :-
     http_put(Server.url(URL), json(Data), Reply, [json_object(dict), status_code(Status)]).
