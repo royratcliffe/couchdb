@@ -37,21 +37,27 @@ Server.membership() := Membership :-
     Server.get_url('_membership') = 200-Membership,
     tag_dict(Membership, couchdb_membership).
 
+options([request_header(accept=application/json), json_object(dict)]).
+
 Server.head_url(URL) := Status :-
     http_open(Server.url(URL), Stream, [method(head), status_code(Status)]),
     close(Stream).
 
 Server.get_url(URL) := Status-Reply :-
-    http_get(Server.url(URL), Reply, [request_header(accept=application/json), json_object(dict), status_code(Status)]).
+    options(Options),
+    http_get(Server.url(URL), Reply, [status_code(Status)|Options]).
 
 Server.put_url(URL, Data) := Status-Reply :-
-    http_put(Server.url(URL), json(Data), Reply, [json_object(dict), status_code(Status)]).
+    options(Options),
+    http_put(Server.url(URL), json(Data), Reply, [status_code(Status)|Options]).
 
 Server.post_url(URL, Data) := Status-Reply :-
-    http_post(Server.url(URL), json(Data), Reply, [json_object(dict), status_code(Status)]).
+    options(Options),
+    http_post(Server.url(URL), json(Data), Reply, [status_code(Status)|Options]).
 
 Server.delete_url(URL) := Status-Reply :-
-    http_delete(Server.url(URL), Reply, [json_object(dict), status_code(Status)]).
+    options(Options),
+    http_delete(Server.url(URL), Reply, [status_code(Status)|Options]).
 
 Server.url(URL0) := URL :-
     parse_url(URL0, Server.base_url, Attributes),
